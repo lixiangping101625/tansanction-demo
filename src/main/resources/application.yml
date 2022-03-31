@@ -1,0 +1,54 @@
+server:
+  port: 8080
+
+app:
+  datasource:
+    first:
+      url: "jdbc:mysql://localhost:3307/db_1"
+      username: root
+      password: 123456
+      configuration:
+        connection-timeout: 30000 #等待连接池分配连接的最大时长（毫秒） 默认30秒。超时报SQLException异常
+        minimum-idle: 5 #最小连接数
+        maximum-pool-size: 20 #最大连接数
+        auto-commit: false #自动提交
+        idle-timeout: 600000 #连接超时的最大时长（毫秒） 默认10分钟。超时则被释放。
+        pool-name: FataSourceHikariCP #连接池名字
+        max-lifetime: 1800000 #连接的生命日常（毫秒）。默认30分钟。超时则被释放（retired）
+    second:
+      url: "jdbc:mysql://124.70.136.139:3308/db_2"
+      username: root
+      password: 14529f1e73f9
+      configuration:
+        connection-timeout: 30000 #等待连接池分配连接的最大时长（毫秒） 默认30秒。超时报SQLException异常
+        minimum-idle: 5 #最小连接数
+        maximum-pool-size: 20 #最大连接数
+        auto-commit: false #自动提交
+        idle-timeout: 600000 #连接超时的最大时长（毫秒） 默认10分钟。超时则被释放。
+        pool-name: FataSourceHikariCP #连接池名字
+        max-lifetime: 1800000 #连接的生命日常（毫秒）。默认30分钟。超时则被释放（retired）
+#    second:
+#      url: "jdbc:mysql://localhost:3307/db_2"
+#      username: root
+#      password: 123456
+#      configuration:
+#        connection-timeout: 30000 #等待连接池分配连接的最大时长（毫秒） 默认30秒。超时报SQLException异常
+#        minimum-idle: 5 #最小连接数
+#        maximum-pool-size: 20 #最大连接数
+#        auto-commit: true #自动提交
+#        idle-timeout: 600000 #连接超时的最大时长（毫秒） 默认10分钟。超时则被释放。
+#        pool-name: FataSourceHikariCP #连接池名字
+#        max-lifetime: 1800000 #连接的生命日常（毫秒）。默认30分钟。超时则被释放（retired）
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml # mybatis xml位置
+#  type-aliases-package: com.hs.dingqibao.pojo //mybatis xml返回类型别名
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    com.distribute.tansanctiondemo: debug
+  file:
+    name: test.log
+
